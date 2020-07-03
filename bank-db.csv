@@ -1,0 +1,11 @@
+id,first_name,last_name,account_number,digit,cpf,address,zip_code,city,state,country,credit_card,is_active,date_registered
+0,Sarah,Gomes,598992,6,267324735-36,Rua Guaraciaba 1180,12220-720,São José dos Campos,São Paulo,Brazil,8655-9429-3692,true,
+1,Danilo,A Santos,897788,6,677332639-45,Servidão Omega 1772,25956-240,Teresópolis,Rio de Janeiro,Brazil,,false,
+2,Clara,Barbosa,242552,8,453396444-84,Jardim Bela Vista 1107,23580-000,Rio de Janeiro,Rio de Janeiro,Brazil,7433-3652-2225,true,
+3,Marcos,A Sousa,664536,7,288254979-46,Rua Tiradentes 1431,9911-190,Diadema,São Paulo,Brazil,2845-7379-8956,true,
+4,Luana,Silva,629796,5,424484877-26,Rua Heliada 231,26040-520,Nova Iguaçu,Rio de Janeiro,Brazil,6974-6642-4978,true,
+5,Kauê,Almeida,264795,4,486695763-22,Rua Lara Nilsa Raffaini Cação 586,14070-530,Ribeirão Preto,São Paulo,Brazil,7997-7345-7235,true,
+6,Nicolas,Rocha,443435,6,674793649-55,Quadra SQN 416 Bloco J 1150,70879-100,Brasília,Distrito Federal,Brazil,,false,
+7,Julia,C Dias,855873,6,382862948-94,Quadra SQS 316 Bloco E 831,70387-050,Brasília,Distrito Federal,Brazil,,false,
+8,Marcos,Lima,473496,7,635595577-23,Rua Antônio de Paula 1112,13847-017,Mogi-Guaçu,São Paulo,Brazil,4866-7395-5955,true,
+9,Rafaela,Fernandes,695635,9,235299468-49,Travessa São Matheus 985,14055-564,Ribeirão Preto,São Paulo,Brazil,8739-9286-2674,true,

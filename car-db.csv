@@ -1,0 +1,11 @@
+id,first_name,last_name,account_number,digit,cpf,address,zip_code,city,state,country,credit_card,is_active,date_registered
+0,Júlia,Correia,784621,6,267324735-36,Rua São Vicente de Paula 344,27288-460,Volta Redonda,Rio de Janeiro,Brazil,5457-8546-2479,true,
+1,Julia,C Dias,855873,6,382862948-94,Quadra SQS 316 Bloco E 831,70387-050,Brasília,Distrito Federal,Brazil,,false,
+2,Isabela,C Melo,978266,4,453396444-84,Rua Seis 715,27523-070,Resende,Rio de Janeiro,Brazil,8799-3399-6946,true,
+3,Rafaela,Fernandes,695635,9,235299468-49,Travessa São Matheus 985,14055-564,Ribeirão Preto,São Paulo,Brazil,8739-9286-2674,true,
+4,Kátia,Soares,297473,4,424484877-26,Rua Gravatá 672,21610-510,Rio de Janeiro,Rio de Janeiro,Brazil,4267-9635-2542,true,
+5,Yuri,Alves,864598,2,486695763-22,Rua Sete 1578,23065-080,Rio de Janeiro,Rio de Janeiro,Brazil,,false,
+6,Marcos,A Sousa,664536,7,288254979-46,Rua Tiradentes 1431,9911-190,Diadema,São Paulo,Brazil,2845-7379-8956,true,
+7,Arthur,Guilherme,578425,1,674793649-55,Rua Aníbal Falcão 262,25960-250,Teresópolis,Rio de Janeiro,Brazil,5467-3482-2987,true,
+8,Bruno,Silva,297942,0,635595577-23,Rua Pardal 602,21941-791,Rio de Janeiro,Rio de Janeiro,Brazil,4539-9697-6928,true,
+9,Danilo,A Santos,897788,6,677332639-45,Servidão Omega 1772,25956-240,Teresópolis,Rio de Janeiro,Brazil,,false,
