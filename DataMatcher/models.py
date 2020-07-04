@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -32,6 +33,9 @@ class FileUpload(models.Model):
     file = models.FileField(upload_to=dir_to_upload)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ["-uploaded_at"]
+
     def get_file_name(self):
         return self.file.name.replace(self.dir_to_upload, '')
 
@@ -44,5 +48,14 @@ class FileUpload(models.Model):
     def get_file_url(self):
         return self.file.url
 
+    def get_file_description(self):
+        return self.description
+
     def __str__(self):
         return f'{self.get_file_name()} - {self.get_file_date()}'
+
+
+class FileUploadForm(forms.ModelForm):
+    class Meta:
+        model = FileUpload
+        fields = ('file', 'description')

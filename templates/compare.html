@@ -1,28 +1,24 @@
-{% extends 'body.html' %} {% block content %}
+{% extends 'body.html' %}
+{% block content %}
   <h2>Compare</h2>
 
-  {% if file_list %}
-    <form action="submit" method="POST">
-      {% csrf_token %}
+  <hr/>
 
-      <table>
-        <tr>
-          <th>Tables</th>
-          <th>Added on</th>
-        </tr>
-        {% for file in file_list %}
-          <tr>
-            <td><input type="checkbox" name="table" value="{{ file.get_file_url }}">
-              <label for="table_{{ file.get_file_name }}"> <a href="{{ file.get_file_url }}">
-                {{ file.get_file_name }}</a></label></td>
-            <td>{{ file.get_file_date }}</td>
-          </tr>
-        {% endfor %}
-      </table>
+  <div>
+    <p>Upload data sets to compare or select one from bellow!</p>
+    {% include 'upload.html' %}
+  </div>
 
-      <input type="submit" value="Compare">
-    </form>
-  {% else %}
-    <li>Sorry, not found.</li>
-  {% endif %}
+  <hr/>
+
+  <div>
+    <p>Select ONE dataset bellow to compare with the INTERNAL database
+      or select TWO to compare between them.</p>
+    {% include 'tables.html' %}
+  </div>
+
+  <div>
+    {% include 'messages.html' %}
+  </div>
+
 {% endblock %}
