@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from DataMatcher.models import DataTable
+from DataMatcher.models import DataTable, FileUpload
 
 
 # Register your models here.
@@ -14,3 +14,4 @@ class TableDetails(admin.ModelAdmin):
 
 
 admin.site.register(DataTable, TableDetails)
+admin.site.register(FileUpload)

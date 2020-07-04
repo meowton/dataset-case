@@ -1,12 +1,12 @@
 {% extends 'body.html' %} {% block content %}
-  <h2>Evento</h2>
+  <h2>Tables</h2>
 
   <div>
-    {{ table_data | safe }}
+    {{ table_from_db | safe }}
   </div>
 
   <div>
-    {{ tables | safe }}
+    {{ table_matches | safe }}
   </div>
 
 {% endblock %}

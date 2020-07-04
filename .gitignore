@@ -568,3 +568,8 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
+/BigData/__init__.py
+/DataMatcher/migrations/
+/DataMatcher/__init__.py
+/.idea/dataSources.xml
+/exported.zip

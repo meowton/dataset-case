@@ -1,0 +1,28 @@
+{% extends 'body.html' %} {% block content %}
+  <h2>Compare</h2>
+
+  {% if file_list %}
+    <form action="submit" method="POST">
+      {% csrf_token %}
+
+      <table>
+        <tr>
+          <th>Tables</th>
+          <th>Added on</th>
+        </tr>
+        {% for file in file_list %}
+          <tr>
+            <td><input type="checkbox" name="table" value="{{ file.get_file_url }}">
+              <label for="table_{{ file.get_file_name }}"> <a href="{{ file.get_file_url }}">
+                {{ file.get_file_name }}</a></label></td>
+            <td>{{ file.get_file_date }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+
+      <input type="submit" value="Compare">
+    </form>
+  {% else %}
+    <li>Sorry, not found.</li>
+  {% endif %}
+{% endblock %}
