@@ -1,8 +1,25 @@
 {% load static %}
-{% block content %}
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload</button>
-  </form>
-{% endblock %}
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {#    {{ form.as_p }}#}
+
+  <div class="file">
+    <label class="file-label">
+        <span class="file-cta">
+        <span class="file-icon">
+          <i class="fas fa-upload"></i>
+        </span>
+        <span class="file-label">
+          {{ form.file }}
+        </span>
+      </span>
+    </label>
+
+  </div>
+  {% load widget_tweaks %}
+  <p>Description:</p>
+  {{ form.description | add_class:"input" }}
+  <br/>
+  <br/>
+  <button class="button" type="submit">Upload</button>
+</form>

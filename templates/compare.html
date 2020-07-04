@@ -1,24 +1,27 @@
 {% extends 'body.html' %}
 {% block content %}
-  <h2>Compare</h2>
+  <div class="padded-2_0">
+    <h1>Compare</h1>
+    <div>
+      <p>Upload data sets to compare or select one from bellow!</p>
+      {% include 'upload.html' %}
+    </div>
 
-  <hr/>
+    <hr>
 
-  <div>
-    <p>Upload data sets to compare or select one from bellow!</p>
-    {% include 'upload.html' %}
-  </div>
+    <div>
+      <p>Select ONE dataset bellow to compare with the INTERNAL database
+        or select TWO to compare between them.</p>
+      <div>
+        {% include 'tables.html' %}
+      </div>
+    </div>
 
-  <hr/>
+    <hr>
 
-  <div>
-    <p>Select ONE dataset bellow to compare with the INTERNAL database
-      or select TWO to compare between them.</p>
-    {% include 'tables.html' %}
-  </div>
-
-  <div>
-    {% include 'messages.html' %}
+    <div>
+      {% include 'messages.html' %}
+    </div>
   </div>
 
 {% endblock %}

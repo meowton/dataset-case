@@ -46,6 +46,8 @@ def compare(request):
         form = FileUploadForm()
     response = {'file_list': query_objects(FileUpload),
                 'form': form}
+
+    print()
     return render(request, 'compare.html', response)
 
 
