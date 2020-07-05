@@ -13,5 +13,9 @@ class TableDetails(admin.ModelAdmin):
     )
 
 
+class FileDetails(admin.ModelAdmin):
+    list_display = ('id', 'file', 'description', 'uploaded_at')
+
+
 admin.site.register(DataTable, TableDetails)
-admin.site.register(FileUpload)
+admin.site.register(FileUpload, FileDetails)

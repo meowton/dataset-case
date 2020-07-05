@@ -3,23 +3,23 @@
   {% csrf_token %}
   {#    {{ form.as_p }}#}
 
-  <div class="file">
-    <label class="file-label">
-        <span class="file-cta">
-        <span class="file-icon">
-          <i class="fas fa-upload"></i>
-        </span>
-        <span class="file-label">
-          {{ form.file }}
-        </span>
-      </span>
-    </label>
-
+  <div class="field">
+    <label class="label">Name</label>
+    <div class="control">
+      {{ form.file }}
+    </div>
   </div>
-  {% load widget_tweaks %}
-  <p>Description:</p>
-  {{ form.description | add_class:"input" }}
-  <br/>
-  <br/>
-  <button class="button" type="submit">Upload</button>
+
+  <div class="field">
+    <label class="label">Description</label>
+    <div class="control ta-size-30">
+      {{ form.description }}
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-link" type="submit">Upload</button>
+    </div>
+  </div>
 </form>

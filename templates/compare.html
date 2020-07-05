@@ -1,14 +1,18 @@
 {% extends 'body.html' %}
 {% block content %}
-  <div class="padded-2_0">
-    <h1>Compare</h1>
+  <div class="padded-top-2_0">
+
+    <h4 class="title is-4">Upload table</h4>
+
     <div>
       <p>Upload data sets to compare or select one from bellow!</p>
+      <br/>
       {% include 'upload.html' %}
     </div>
 
     <hr>
 
+    <h4 class="title is-4">Compare tables</h4>
     <div>
       <p>Select ONE dataset bellow to compare with the INTERNAL database
         or select TWO to compare between them.</p>
@@ -16,12 +20,8 @@
         {% include 'tables.html' %}
       </div>
     </div>
-
-    <hr>
-
-    <div>
+    <div class="padded-bottom-2_0">
       {% include 'messages.html' %}
     </div>
   </div>
-
 {% endblock %}

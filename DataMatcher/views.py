@@ -47,7 +47,6 @@ def compare(request):
     response = {'file_list': query_objects(FileUpload),
                 'form': form}
 
-    print()
     return render(request, 'compare.html', response)
 
 
@@ -56,6 +55,13 @@ def submit_comparison(request):
 
         try:
             table_list_form = request.POST.getlist('table')
+            table_delete = request.POST.get('delete')
+
+            if len(table_list_form) > 0 and table_delete == 'true':
+                for table in table_list_form:
+                    file = FileUpload.objects.get(file=table.replace('/media/', ''))
+                    file.delete()
+                return redirect('/compare/')
 
             if len(table_list_form) == 1:
                 table_df_1 = query_to_dataframe(DataTable)
@@ -72,10 +78,14 @@ def submit_comparison(request):
                                      left_table,
                                      right_table)
 
+            pd.set_option('display.max_colwidth', 10)
             response = {'file_list': query_objects(FileUpload),
                         'table_matches':
-                            do_match.dataset_filter().to_html(header=True,
-                                                              index=False)}
+                            do_match.dataset_filter().to_html(classes=[
+                                'table', 'is-bordered', 'is-striped',
+                                'is-narrow', 'is-hoverable', 'is-fullwidth'],
+                                header=True,
+                                index=False)}
 
         except FileNotFoundError:
             messages.error(request, "File not found.")
@@ -84,6 +94,9 @@ def submit_comparison(request):
             messages.error(request, "You need to select at least one!")
             return redirect('/compare/')
         except KeyError:
+            return redirect('/compare/')
+        except pd.errors.ParserError:
+            messages.error(request, "Invalid table formats!")
             return redirect('/compare/')
 
         return render(request, 'results.html', response)

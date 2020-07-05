@@ -1,26 +1,53 @@
 {% if file_list %}
-  <form action="results" method="POST">
+  <form id="table_form" action="results" method="POST">
     {% csrf_token %}
 
-    <table>
-      <tr>
-        <th>Tables</th>
-        <th>Description</th>
-        <th>Added on</th>
-      </tr>
-      {% for file in file_list %}
+    <div class="field is-grouped">
+      <table class="table table-container">
+        <thead>
         <tr>
-          <td><input type="checkbox" name="table" value="{{ file.get_file_url }}">
-            <label for="table"> <a href="{{ file.get_file_url }}">
-              {{ file.get_file_name }}</a></label></td>
-          <td>{{ file.get_file_description | capfirst }}</td>
-          <td>{{ file.get_file_date }}</td>
+          <th></th>
+          <th>Tables</th>
+          <th>Description</th>
+          <th> Added on</th>
         </tr>
-      {% endfor %}
-    </table>
-    <br/>
-    <input type="submit" value="Compare">
+        </thead>
+        <tfoot>
+        <tr>
+          <th></th>
+          <th>Tables</th>
+          <th>Description</th>
+          <th>Added on</th>
+        </tr>
+        </tfoot>
+        <tbody>
+        {% for file in file_list %}
+          <tr>
+            <th><input type="checkbox" name="table"
+                       value="{{ file.get_file_url }}"></th>
+            <td>{{ file.get_file_name }}</td>
+            <td>{{ file.get_file_description | capfirst }}</td>
+            <td>{{ file.get_file_date }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link" type="submit">Compare</button>
+      </div>
+      <div class="control">
+        <button class="button is-danger" onclick="setElementValue('delete', 'true')" type="submit">Delete</button>
+      </div>
+    </div>
+
+    <input id="delete" type="text" name="delete" value="" size="1" readonly hidden>
+
   </form>
 {% else %}
-  <p>Sorry, not found.</p>
+  <div class="padded-2_0">
+    <p>Sorry, no tables found. Why don't you upload some?</p>
+  </div>
 {% endif %}

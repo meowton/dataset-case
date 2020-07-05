@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'DataMatcher.apps.DatamatcherConfig',
-    'widget_tweaks',
+    'django_cleanup.apps.CleanupConfig'
 ]
 
 MIDDLEWARE = [
@@ -117,7 +117,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 STATICFILES_DIRS = (
-    os.path.join(SITE_ROOT, 'static/'),
+    os.path.join(SITE_ROOT, 'static'),
 )
 
 MEDIA_URL = '/media/'

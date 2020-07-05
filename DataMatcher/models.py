@@ -29,7 +29,7 @@ class DataTable(models.Model):
 
 class FileUpload(models.Model):
     dir_to_upload = 'tables/'
-    description = models.CharField(max_length=100, blank=True)
+    description = models.TextField(max_length=100, blank=True)
     file = models.FileField(upload_to=dir_to_upload)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
@@ -59,3 +59,12 @@ class FileUploadForm(forms.ModelForm):
     class Meta:
         model = FileUpload
         fields = ('file', 'description')
+        widgets = {
+            # 'files': forms.FileField(),
+            'description': forms.Textarea(attrs={'class': 'textarea',
+                                                 'name': 'description',
+                                                 'rows': 2, 'cols': 60,
+                                                 'maxlength': 1,
+                                                 'placeholder':
+                                                     'Maximum of 100 characters'}),
+        }

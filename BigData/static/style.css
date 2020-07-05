@@ -1,3 +1,11 @@
+table {
+    width: max-content !important;
+}
+
+.ta-size-30 {
+    max-width: 30em !important;
+}
+
 .padded-0_5 {
     padding: 0.5em;
 }
@@ -63,4 +71,8 @@
 
 .padd {
     padding: 20px;
+}
+
+.text-row {
+
 }
