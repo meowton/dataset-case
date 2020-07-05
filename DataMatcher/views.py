@@ -52,7 +52,6 @@ def compare(request):
 
 def submit_comparison(request):
     if request.method == "POST":
-
         try:
             table_list_form = request.POST.getlist('table')
             table_delete = request.POST.get('delete')
@@ -78,7 +77,6 @@ def submit_comparison(request):
                                      left_table,
                                      right_table)
 
-            pd.set_option('display.max_colwidth', 10)
             response = {'file_list': query_objects(FileUpload),
                         'table_matches':
                             do_match.dataset_filter().to_html(classes=[

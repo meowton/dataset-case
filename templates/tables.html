@@ -1,5 +1,7 @@
 {% if file_list %}
-  <form id="table_form" action="results" method="POST">
+  <form id="table_form"
+        action="results"
+        method="POST">
     {% csrf_token %}
 
     <div class="field is-grouped">
@@ -9,7 +11,7 @@
           <th></th>
           <th>Tables</th>
           <th>Description</th>
-          <th> Added on</th>
+          <th>Added on</th>
         </tr>
         </thead>
         <tfoot>
@@ -23,7 +25,8 @@
         <tbody>
         {% for file in file_list %}
           <tr>
-            <th><input type="checkbox" name="table"
+            <th><input name="table"
+                       type="checkbox"
                        value="{{ file.get_file_url }}"></th>
             <td>{{ file.get_file_name }}</td>
             <td>{{ file.get_file_description | capfirst }}</td>
@@ -36,14 +39,25 @@
 
     <div class="field is-grouped">
       <div class="control">
-        <button class="button is-link" type="submit">Compare</button>
+        <button class="button is-link"
+                type="submit">Compare
+        </button>
       </div>
       <div class="control">
-        <button class="button is-danger" onclick="setElementValue('delete', 'true')" type="submit">Delete</button>
+        <button class="button is-danger"
+                onclick="setElementValue('delete', 'true')"
+                type="submit">Delete
+        </button>
       </div>
     </div>
 
-    <input id="delete" type="text" name="delete" value="" size="1" readonly hidden>
+    <input id="delete"
+           type="text"
+           name="delete"
+           value=""
+           size="1"
+           readonly
+           hidden>
 
   </form>
 {% else %}
