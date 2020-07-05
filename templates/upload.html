@@ -1,25 +1,55 @@
-{% load static %}
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {#    {{ form.as_p }}#}
+{% extends 'body.html' %}
+{% block content %}
+  {% load static %}
+  <div class="padded-top-2_0">
+    <h4 class="title is-4">Upload table</h4>
 
-  <div class="field">
-    <label class="label">Name</label>
-    <div class="control">
-      {{ form.file }}
+    <article class="message is-dark">
+      <div class="message-header">
+        <p>How to</p>
+      </div>
+      <div class="message-body">
+        <p>Upload data sets bellow. Only files with <strong>comma
+          separated values</strong> are supported at the moment
+          (ex: <strong>.csv</strong>, <strong>.txt</strong>).</p>
+        <br/>
+        <p>If you want to compare tables visit:
+          <a href="/compare/"><strong>COMPARE</strong></a>.</p>
+      </div>
+    </article>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {#    {{ form.as_p }}#}
+
+      <div class="field">
+        <label class="label">Choose a file to upload from your PC</label>
+        <div class="control">
+          {{ form.file }}
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Add a description (Optional)</label>
+        <div class="control ta-size-30">
+          {{ form.description }}
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" type="submit">Upload</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="padded-top-2_0 padded-bottom-2_0">
+      {% for message in messages %}
+        <div class="notification is-success">
+          <p>{{ message }} Compare?
+            <a href="/compare/"><strong>Click Here</strong></a></p>
+        </div>
+      {% endfor %}
     </div>
   </div>
-
-  <div class="field">
-    <label class="label">Description</label>
-    <div class="control ta-size-30">
-      {{ form.description }}
-    </div>
-  </div>
-
-  <div class="field is-grouped">
-    <div class="control">
-      <button class="button is-link" type="submit">Upload</button>
-    </div>
-  </div>
-</form>
+{% endblock %}

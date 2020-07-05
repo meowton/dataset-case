@@ -8,6 +8,7 @@ from DataMatcher import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
+    path('upload/', views.upload),
     path('compare/', views.compare),
     path('compare/results', views.submit_comparison)
 ]

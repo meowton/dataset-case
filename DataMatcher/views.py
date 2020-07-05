@@ -6,10 +6,6 @@ from django_pandas.io import read_frame
 from DataMatcher import match
 from DataMatcher.models import DataTable, FileUpload, FileUploadForm
 
-# Columns to compare values
-left_table = ['first_name', 'last_name', 'cpf', 'credit_card']
-right_table = ['first_name', 'last_name', 'cpf', 'credit_card']
-
 
 def query_objects(model):
     return model.objects.all()
@@ -30,7 +26,8 @@ def upload(request):
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/tables/')
+            messages.info(request, "File uploaded successfully!")
+            return redirect('/upload/')
     else:
         form = FileUploadForm()
     return render(request, 'upload.html', {'form': form})
@@ -55,6 +52,8 @@ def submit_comparison(request):
         try:
             table_list_form = request.POST.getlist('table')
             table_delete = request.POST.get('delete')
+            left_columns = request.POST.get('left_cols')
+            right_columns = request.POST.get('right_cols')
 
             if len(table_list_form) > 0 and table_delete == 'true':
                 for table in table_list_form:
@@ -65,12 +64,27 @@ def submit_comparison(request):
             if len(table_list_form) == 1:
                 table_df_1 = query_to_dataframe(DataTable)
                 table_df_2 = pd.read_csv(f'.{table_list_form[0]}')
+
             elif len(table_list_form) > 2:
-                messages.error(request, "Select at most two!")
+                messages.error(request, "Select at most two tables!")
                 return redirect('/compare/')
+
             else:
                 table_df_1 = pd.read_csv(f'.{table_list_form[0]}')
                 table_df_2 = pd.read_csv(f'.{table_list_form[1]}')
+
+            default_columns = list(set(table_df_1.columns) &
+                                   set(table_df_2.columns))
+
+            if left_columns == '':
+                left_table = default_columns
+            else:
+                left_table = left_columns.replace(' ', '').split(',')
+
+            if right_columns == '':
+                right_table = default_columns
+            else:
+                right_table = right_columns.replace(' ', '').split(',')
 
             do_match = match.Matcher(table_df_1,
                                      table_df_2,
@@ -86,15 +100,20 @@ def submit_comparison(request):
                                 index=False)}
 
         except FileNotFoundError:
-            messages.error(request, "File not found.")
+            messages.error(request, "It seems the file was not found...")
             return redirect('/compare/')
         except IndexError:
-            messages.error(request, "You need to select at least one!")
+            messages.error(request, "You need to select at least one table!")
             return redirect('/compare/')
         except KeyError:
+            messages.error(request, "Invalid column(s) name(s)!")
             return redirect('/compare/')
         except pd.errors.ParserError:
-            messages.error(request, "Invalid table formats!")
+            messages.error(request, "Invalid table(s) format(s)!")
+            return redirect('/compare/')
+        except ValueError:
+            messages.error(request, 'You must provide column(s) '
+                                    'name(s) for both tables!')
             return redirect('/compare/')
 
         return render(request, 'results.html', response)

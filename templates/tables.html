@@ -37,7 +37,25 @@
       </table>
     </div>
 
+
+    <div class="field ta-size-30 control">
+      <label>Columns to search in the <strong>FIRST</strong> or
+        <strong>INTERNAL</strong> table
+        <textarea name="left_cols"
+                  class="textarea"
+                  rows="2"
+                  placeholder="first_name, last_name, cpf, account_number"></textarea>
+      </label>
+      <label>Columns to search in the <strong>SECOND</strong> table
+        <textarea name="right_cols"
+                  class="textarea"
+                  rows="2"
+                  placeholder="first_name, last_name, cpf, account_number"></textarea>
+      </label>
+
+    </div>
     <div class="field is-grouped">
+
       <div class="control">
         <button class="button is-link"
                 type="submit">Compare
@@ -50,6 +68,7 @@
         </button>
       </div>
     </div>
+
 
     <input id="delete"
            type="text"

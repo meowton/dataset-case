@@ -1,27 +1,67 @@
 {% extends 'body.html' %}
 {% block content %}
   <div class="padded-top-2_0">
-
-    <h4 class="title is-4">Upload table</h4>
-
-    <div>
-      <p>Upload data sets to compare or select one from bellow!</p>
-      <br/>
-      {% include 'upload.html' %}
-    </div>
-
-    <hr>
-
     <h4 class="title is-4">Compare tables</h4>
-    <div>
-      <p>Select ONE dataset bellow to compare with the INTERNAL database
-        or select TWO to compare between them.</p>
-      <div>
-        {% include 'tables.html' %}
-      </div>
+
+    <div class="padded-bottom-2_0">
+      {% for message in messages %}
+        <div class="notification is-danger">
+          <p>{{ message }}</p>
+        </div>
+      {% endfor %}
     </div>
+
+    <article class="message is-dark">
+      <div class="message-header">
+        <p>How to</p>
+      </div>
+      <div class="message-body">
+        <p>Select <strong>one</strong> table bellow to compare with the
+          <strong>internal database</strong> or select <strong>two</strong>
+          to compare between them.</p>
+        <br/>
+        <p>If you want to upload your own table visit:
+          <a href="/upload/"><strong>UPLOAD</strong></a></p>
+      </div>
+    </article>
+    <div>
+      {% include 'tables.html' %}
+    </div>
+
     <div class="padded-bottom-2_0">
       {% include 'messages.html' %}
+    </div>
+
+    <div class="padded-bottom-2_0">
+      <article class="message is-info">
+        <div class="message-header">
+          <p>Tips</p>
+        </div>
+        <div class="message-body">
+          <p>Select at least one table from the list. Remember that selecting
+            <strong>one</strong> table will compare it to the
+            <strong>internal</strong> database table. Currently it can only
+            compare <strong>two</strong> tables at once.</p>
+          <br/>
+          <p>The current supported formats are files with <strong>comma
+            separated values</strong>, like <strong>.csv</strong> or
+            <strong>.txt</strong>. In doubt stick to the <strong>.csv</strong>
+            format as the others are not guaranteed to work.</p>
+          <br/>
+          <p>Keep the formatting of the columns in the search field separated
+            by <strong>commas</strong>, any other punctuation or unnecessary
+            caracteres will not work. Ex: <strong>column_name_1, column_name_2,
+              column_name_3</strong> and so on.</p>
+          <br/>
+          <p>Keep the columns names in <strong>matching order</strong>,
+            the <strong>first column name</strong> of the <strong>first
+              field</strong> will match the <strong>first column name
+            </strong> of the <strong>second field</strong> and so on and
+            so forth. If you write four names in the first field you
+            also need to write four names in the second field.</p>
+        </div>
+      </article>
+
     </div>
   </div>
 {% endblock %}
