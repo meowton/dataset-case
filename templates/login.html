@@ -1,0 +1,67 @@
+{% extends 'body.html' %}
+{% block content %}
+  <div class="container is-fluid padded-2_0 padded-footer_bottom_8_0">
+    <h4 class="title is-4">Login</h4>
+
+    <div class="padded-bottom-2_0">
+      {% for message in messages %}
+        <div class="notification is-danger">
+          <p>{{ message }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <article class="message is-info">
+      <div class="message-header">
+        <p>Info</p>
+      </div>
+      <div class="message-body">
+        <p>We are not accepting registrations at the moment. As of now only authorized staff may use the platform.</p>
+        <br>
+        <p>Sorry for the inconvenience.</p>
+      </div>
+    </article>
+
+    <form class="form"
+          action="submit"
+          method="POST">
+      {% csrf_token %}
+
+      <div class="field">
+        <label class="label">Username</label>
+        <div class="control has-icons-left has-icons-right">
+          <input name="username"
+                 class="input"
+                 type="text"
+                 placeholder="Your username">
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control has-icons-left has-icons-right">
+          <input name="password"
+                 class="input"
+                 type="password"
+                 placeholder="Your password">
+          <span class="icon is-small is-left">
+            <i class="fas fa-key"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link"
+                  type="submit">Submit
+          </button>
+        </div>
+        <div class="control">
+          <a href="/" class="button is-link is-light">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

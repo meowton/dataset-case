@@ -2,6 +2,20 @@ table {
     width: max-content !important;
 }
 
+footer {
+    background-color: hsl(0, 0%, 21%) !important;
+}
+
+.hero-background {
+    background-image: url("imgs/comp02.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px black;
+}
+
 .ta-size-30 {
     max-width: 30em !important;
 }
@@ -53,6 +67,14 @@ table {
 
 .margin-right_0_5 {
     margin-right: 0.5em;
+}
+
+.padded-footer_bottom_6_0 {
+    padding-bottom: 6.0em;
+}
+
+.padded-footer_bottom_8_0 {
+    padding-bottom: 8.0em;
 }
 
 .box-shadow {

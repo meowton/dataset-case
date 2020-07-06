@@ -1,12 +1,38 @@
 {% extends 'body.html' %}
 {% block content %}
-  <h2>Results</h2>
+  <div class="container is-fluid padded-top-2_0 padded-footer_bottom_6_0">
+    <h4 class="title is-4">Results</h4>
 
-  {% if table_matches %}
-    <div class="table-container">
-      {{ table_matches | safe }}
-    </div>
-  {% else %}
-    <p>Sorry, not found.</p>
-  {% endif %}
+    <article class="message is-info">
+      <div class="message-header">
+        <p>Info</p>
+      </div>
+      <div class="message-body">
+        <p>This is the result of the matching done between the tables
+          you selected previously. The matching is done through a scoring
+          algorithm that matches how similar data in the columns are. The
+          following table already filtered out negative and non matching
+          rows.</p>
+        <br/>
+        <p>If you want to compare tables visit:
+          <a href="/compare/"><strong>COMPARE</strong></a></p>
+        <p>If you want to upload your own table visit:
+          <a href="/upload/"><strong>UPLOAD</strong></a></p>
+      </div>
+    </article>
+
+    {% if table_matches %}
+      <div class="table-container">
+        {{ table_matches | safe }}
+      </div>
+
+      <button class="button is-success"
+              onclick="exportTableToCSV('result_table.csv')"
+              type="button">Download table
+      </button>
+    {% else %}
+      <p>Sorry, no results. Why don't you go compare a table
+        <a href="/compare/"><strong>HERE</strong></a>?</p>
+    {% endif %}
+  </div>
 {% endblock %}

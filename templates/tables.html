@@ -52,7 +52,6 @@
                   rows="2"
                   placeholder="first_name, last_name, cpf, account_number"></textarea>
       </label>
-
     </div>
     <div class="field is-grouped">
 
@@ -67,17 +66,36 @@
                 type="submit">Delete
         </button>
       </div>
+
+      <div class="field">
+        <div class="control has-icons-left">
+          <div class="select">
+            <select name="selected_rows">
+              <option value="5">First 5 matching rows</option>
+              <option selected value="10">First 10 matching rows</option>
+              <option value="20">First 20 matching rows</option>
+              <option value="50">First 50 matching rows</option>
+              <option value="100">First 100 matching rows</option>
+              <option value="500">First 500 matching rows</option>
+              <option value="1000">First 1000 matching rows</option>
+            </select>
+          </div>
+          <div class="icon is-small is-left">
+            <i class="fas fa-table"></i>
+          </div>
+        </div>
+
+      </div>
+
+
+      <input id="delete"
+             type="text"
+             name="delete"
+             value=""
+             size="1"
+             readonly
+             hidden>
     </div>
-
-
-    <input id="delete"
-           type="text"
-           name="delete"
-           value=""
-           size="1"
-           readonly
-           hidden>
-
   </form>
 {% else %}
   <div class="padded-2_0">

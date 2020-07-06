@@ -15,12 +15,11 @@
         href="{% static 'style.css' %}">
 </head>
 <body>
-{% include 'header.html' %}
+{% include 'navbar.html' %}
+
 <section>
-  <div class="container is-fluid">
-    {% block content %}
-    {% endblock %}
-  </div>
+  {% block content %}
+  {% endblock %}
 </section>
 
 {% include 'footer.html' %}

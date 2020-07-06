@@ -1,5 +1,7 @@
 import pandas as pd
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django_pandas.io import read_frame
 
@@ -17,10 +19,36 @@ def query_to_dataframe(model):
 
 
 # Create your views here.
-def index(request):
-    return render(request, "index.html")
+def user_login(request):
+    if request.user.is_authenticated:
+        return redirect('/')
+    return render(request, "login.html")
 
 
+def user_logout(request):
+    logout(request)
+    return redirect("/")
+
+
+def submit_login(request):
+    if request.POST:
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect("/")
+        else:
+            messages.error(request, "Wrong user or password.")
+            return redirect("/login/")
+
+
+def home(request):
+    return render(request, "home.html")
+
+
+@login_required(login_url="/login/")
 def upload(request):
     if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
@@ -33,6 +61,7 @@ def upload(request):
     return render(request, 'upload.html', {'form': form})
 
 
+@login_required(login_url="/login/")
 def compare(request):
     if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
@@ -47,6 +76,7 @@ def compare(request):
     return render(request, 'compare.html', response)
 
 
+@login_required(login_url="/login/")
 def submit_comparison(request):
     if request.method == "POST":
         try:
@@ -54,6 +84,7 @@ def submit_comparison(request):
             table_delete = request.POST.get('delete')
             left_columns = request.POST.get('left_cols')
             right_columns = request.POST.get('right_cols')
+            rows = int(request.POST.get('selected_rows'))
 
             if len(table_list_form) > 0 and table_delete == 'true':
                 for table in table_list_form:
@@ -93,7 +124,7 @@ def submit_comparison(request):
 
             response = {'file_list': query_objects(FileUpload),
                         'table_matches':
-                            do_match.dataset_filter().to_html(classes=[
+                            do_match.dataset_filter().head(rows).to_html(classes=[
                                 'table', 'is-bordered', 'is-striped',
                                 'is-narrow', 'is-hoverable', 'is-fullwidth'],
                                 header=True,

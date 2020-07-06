@@ -7,7 +7,10 @@ from DataMatcher import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
+    path("login/", views.user_login),
+    path("logout/", views.user_logout),
+    path("login/submit", views.submit_login),
+    path('', views.home),
     path('upload/', views.upload),
     path('compare/', views.compare),
     path('compare/results', views.submit_comparison)
