@@ -63,15 +63,7 @@ def upload(request):
 
 @login_required(login_url="/login/")
 def compare(request):
-    if request.method == 'POST':
-        form = FileUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('/compare/')
-    else:
-        form = FileUploadForm()
-    response = {'file_list': query_objects(FileUpload),
-                'form': form}
+    response = {'file_list': query_objects(FileUpload)}
     return render(request, 'compare.html', response)
 
 

@@ -6,6 +6,7 @@ Data Matching project for Festo BigData Intern case presentation 2020. It consis
 With Python 3 installed, in the project root folder run:  
 ```
 python -m venv ./venv  
+source venv/bin/activate  
 pip install -r requirements.txt  
 ```  
 And then:
