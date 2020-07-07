@@ -573,3 +573,4 @@ MigrationBackup/
 /DataMatcher/__init__.py
 /.idea/dataSources.xml
 /exported.zip
+!/db.sqlite3
