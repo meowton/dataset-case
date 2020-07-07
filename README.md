@@ -4,6 +4,11 @@ Data Matching project for Festo BigData Intern case presentation 2020. It consis
 
 ### Installation
 With Python 3 installed, in the project root folder run:  
-``pip install -r requirements.txt``  
-And then:  
-``python manage.py runserver``
+```
+python -m venv ./venv  
+pip install -r requirements.txt  
+```  
+And then:
+```    
+python manage.py runserver
+```  
