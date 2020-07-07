@@ -11,5 +11,9 @@ pip install -r requirements.txt
 ```  
 And then:
 ```    
+python manage.py makemigrations DataMatcher  
+python manage.py sqlmigrate DataMatcher 0001  
+python manage.py migrate  
+python manage.py createsuperuser --username admin  
 python manage.py runserver
 ```  
