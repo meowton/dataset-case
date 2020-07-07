@@ -72,7 +72,6 @@ def compare(request):
         form = FileUploadForm()
     response = {'file_list': query_objects(FileUpload),
                 'form': form}
-
     return render(request, 'compare.html', response)
 
 
@@ -131,7 +130,7 @@ def submit_comparison(request):
                                 index=False)}
 
         except FileNotFoundError:
-            messages.error(request, "It seems the file was not found...")
+            messages.error(request, "It seems the table was not found...")
             return redirect('/compare/')
         except IndexError:
             messages.error(request, "You need to select at least one table!")

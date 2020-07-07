@@ -3,7 +3,6 @@
         action="results"
         method="POST">
     {% csrf_token %}
-
     <div class="field is-grouped">
       <table class="table table-container">
         <thead>
@@ -36,7 +35,6 @@
         </tbody>
       </table>
     </div>
-
 
     <div class="field ta-size-30 control">
       <label>Columns to search in the <strong>FIRST</strong> or
@@ -84,9 +82,7 @@
             <i class="fas fa-table"></i>
           </div>
         </div>
-
       </div>
-
 
       <input id="delete"
              type="text"
